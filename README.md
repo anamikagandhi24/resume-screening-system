@@ -1,14 +1,19 @@
 # Resume Screening System
 
-A Machine Learning based Resume Screening System that predicts the job category of a resume using Natural Language Processing (NLP) and Machine Learning.
+A Machine Learning and NLP based Resume Screening System that predicts the job category of resumes using text classification techniques.
+
+---
 
 ## Features
 
-- Resume text classification
-- NLP preprocessing using TF-IDF
-- Machine Learning model training
-- Job category prediction
-- Resume dataset analysis
+- Resume text preprocessing
+- NLP cleaning pipeline
+- TF-IDF vectorization
+- Resume category prediction
+- Logistic Regression classification model
+- Custom resume prediction support
+
+---
 
 ## Technologies Used
 
@@ -16,8 +21,42 @@ A Machine Learning based Resume Screening System that predicts the job category 
 - Pandas
 - Scikit-learn
 - Jupyter Notebook
-- NLP (TF-IDF Vectorizer)
+- NLP (TF-IDF)
+- Logistic Regression
 - Git & GitHub
+
+---
+
+## Project Workflow
+
+1. Load resume dataset
+2. Clean and preprocess resume text
+3. Convert text into TF-IDF vectors
+4. Encode job categories
+5. Train machine learning model
+6. Evaluate model accuracy
+7. Predict category for custom resumes
+
+---
+
+## Current Model Performance
+
+- Initial Naive Bayes Accuracy: ~53%
+- Improved Logistic Regression Accuracy: ~63%
+
+---
+
+## Example Prediction
+
+Input Resume:
+
+```text
+Java Spring Boot REST API MySQL AWS backend developer
+```
+
+## Predicted Category:
+
+Information Technology
 
 ## Project Structure
 
@@ -29,30 +68,21 @@ resume-screening-system/
 ├── frontend/
 ├── model/
 
-## Workflow
-
-1. Load resume dataset
-2. Clean and preprocess resume text
-3. Convert text into numerical vectors using TF-IDF
-4. Train ML classification model
-5. Predict resume category
-
 ## Current Progress
-
-- Environment setup completed
-- Dataset loaded successfully
-- NLP preprocessing completed
-- Initial ML model trained
-- GitHub repository initialized
-
+-Environment setup completed
+-Dataset preprocessing completed
+-NLP pipeline implemented
+-TF-IDF vectorization completed
+-Logistic Regression model trained
+-Custom prediction working
+-GitHub repository integrated
 ## Future Improvements
-
-- Improve model accuracy
-- Build Flask/FastAPI backend
-- Create React frontend
-- Deploy project using AWS
-- Add PDF resume upload support
+-Improve model accuracy
+-Add Flask/FastAPI backend
+-Build React frontend
+-Add PDF resume upload
+-Deploy project using AWS
+-Add deep learning based NLP models
 
 ## Author
-
 Anamika Gandhi
