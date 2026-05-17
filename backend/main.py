@@ -1,0 +1,47 @@
+from fastapi import FastAPI
+import pickle
+import re
+
+import os
+app = FastAPI()
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model_path = os.path.join(BASE_DIR, '..', 'model', 'model.pkl')
+tfidf_path = os.path.join(BASE_DIR, '..', 'model', 'tfidf.pkl')
+label_encoder_path = os.path.join(BASE_DIR, '..', 'model', 'label_encoder.pkl')
+
+model = pickle.load(open(model_path, 'rb'))
+tfidf = pickle.load(open(tfidf_path, 'rb'))
+le = pickle.load(open(label_encoder_path, 'rb'))
+def clean_resume(text):
+
+    text = text.lower()
+
+    text = re.sub(r'http\S+', ' ', text)
+
+    text = re.sub(r'[^a-zA-Z ]', ' ', text)
+
+    text = re.sub(r'\s+', ' ', text)
+
+    return text
+
+@app.get("/")
+def home():
+    return {"message": "Resume Screening API is running"}
+
+@app.get("/predict")
+def predict(resume: str):
+
+    cleaned_resume = clean_resume(resume)
+
+    vectorized_resume = tfidf.transform([cleaned_resume])
+
+    prediction = model.predict(vectorized_resume)
+
+    category = le.inverse_transform(prediction)
+
+    return {
+        "predicted_category": category[0]
+    }
+    
