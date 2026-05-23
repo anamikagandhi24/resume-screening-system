@@ -45,9 +45,12 @@ def predict(resume: str):
 
     prediction = model.predict(vectorized_resume)
 
+    probability=model.predict_proba(vectorized_resume)
+
     category = le.inverse_transform(prediction)
 
     return {
-        "predicted_category": category[0]
+        "predicted_category": category[0],
+        "confidence":round(float(max(probability[0]))*100,2)
     }
     

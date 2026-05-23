@@ -6,20 +6,53 @@ function App() {
 
   const [prediction, setPrediction] = useState("");
 
+  const [confidence, setConfidence] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
   const predictCategory = async () => {
 
-    const response = await fetch(
-      `http://127.0.0.1:8000/predict?resume=${resume}`
-    );
+  if (!resume.trim()) {
+    alert("Please paste resume text.");
+    return;
+  }
 
-    const data = await response.json();
+  setLoading(true);
 
-    setPrediction(String(data.predicted_category));
-  };
+  const response = await fetch(
+    `http://127.0.0.1:8000/predict?resume=${resume}`
+  );
 
+  const data = await response.json();
+
+  setPrediction(String(data.predicted_category));
+
+  setConfidence(data.confidence);
+
+  setLoading(false);
+};
   return (
-    <div style={{ padding: "40px", fontFamily: "Arial" }}>
-
+  <div
+    style={{
+      minHeight: "100vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "#0f172a",
+      color: "white",
+      fontFamily: "Arial",
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: "#1e293b",
+        padding: "40px",
+        borderRadius: "15px",
+        width: "700px",
+        textAlign: "center",
+        boxShadow: "0px 0px 20px rgba(0,0,0,0.4)",
+      }}
+    >
       <h1>Resume Screening System</h1>
 
       <textarea
@@ -28,18 +61,44 @@ function App() {
         placeholder="Paste resume text here..."
         value={resume}
         onChange={(e) => setResume(e.target.value)}
+        style={{
+          width: "100%",
+          padding: "10px",
+          borderRadius: "10px",
+          marginTop: "20px",
+        }}
       />
 
       <br /><br />
 
-      <button onClick={predictCategory}>
-        Predict Category
+      <button
+        onClick={predictCategory}
+        style={{
+          padding: "12px 25px",
+          border: "none",
+          borderRadius: "10px",
+          backgroundColor: "#3b82f6",
+          color: "white",
+          fontSize: "16px",
+          cursor: "pointer",
+        }}
+      >
+        {loading ? "Predicting..." : "Predict Category"}
       </button>
 
-      <h2>Prediction: {prediction || "Waiting..."}</h2>
-
+      <h2 style={{ marginTop: "25px" }}>
+        Prediction: {prediction || "Waiting..."}
+        
+        {confidence && (
+          <div style={{marginTop: "10px",fontSize: "20px"}}>
+            Confidence: {confidence}%
+          </div>
+        )}
+        
+      </h2>
     </div>
-  );
+  </div>
+);
 }
 
 export default App;
