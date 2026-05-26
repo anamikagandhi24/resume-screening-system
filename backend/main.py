@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi import UploadFile, File
+import pdfplumber
 import pickle
 import re
 from fastapi.middleware.cors import CORSMiddleware
@@ -52,5 +54,34 @@ def predict(resume: str):
     return {
         "predicted_category": category[0],
         "confidence":round(float(max(probability[0]))*100,2)
+    }
+
+@app.post("/upload-pdf")
+async def upload_pdf(file: UploadFile = File(...)):
+
+    text = ""
+
+    with pdfplumber.open(file.file) as pdf:
+
+        for page in pdf.pages:
+            extracted = page.extract_text()
+
+            if extracted:
+                text += extracted
+
+    cleaned_resume = clean_resume(text)
+
+    vectorized_resume = tfidf.transform([cleaned_resume])
+
+    prediction = model.predict(vectorized_resume)
+
+    probability = model.predict_proba(vectorized_resume)
+
+    category = le.inverse_transform(prediction)
+
+    return {
+        "predicted_category": category[0],
+        "confidence": round(float(max(probability[0])) * 100, 2),
+        "extracted_text": text
     }
     

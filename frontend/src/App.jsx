@@ -10,6 +10,59 @@ function App() {
 
   const [loading, setLoading] = useState(false);
 
+  const handleFileUpload = (event) => {
+
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    setResume(e.target.result);
+  };
+
+  reader.readAsText(file);
+};
+  const handlePdfUpload = async (event) => {
+
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  const formData = new FormData();
+
+  formData.append("file", file);
+
+  try {
+
+    setLoading(true);
+
+    const response = await fetch(
+      "http://127.0.0.1:8000/upload-pdf",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+
+    setResume(data.extracted_text);
+
+    setPrediction(data.predicted_category);
+
+    setConfidence(data.confidence);
+
+  } catch (error) {
+
+    console.error(error);
+
+  } finally {
+
+    setLoading(false);
+  }
+};
   const predictCategory = async () => {
 
   if (!resume.trim()) {
@@ -54,6 +107,22 @@ function App() {
       }}
     >
       <h1>Resume Screening System</h1>
+
+
+      <input
+        type="file"
+        accept=".txt"
+        onChange={handleFileUpload}
+        style={{ marginBottom: "20px" }}
+      />
+
+
+      <input
+        type="file"
+        accept=".pdf"
+        onChange={handlePdfUpload}
+        style={{ marginBottom: "20px" }}
+      />
 
       <textarea
         rows="10"
