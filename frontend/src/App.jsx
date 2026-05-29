@@ -39,7 +39,7 @@ function App() {
     setLoading(true);
 
     const response = await fetch(
-      "http://127.0.0.1:8000/upload-pdf",
+      "https://resume-screening-system-f1ij.onrender.com/upload-pdf",
       {
         method: "POST",
         body: formData,
@@ -73,7 +73,7 @@ function App() {
   setLoading(true);
 
   const response = await fetch(
-    `http://127.0.0.1:8000/predict?resume=${resume}`
+    `https://resume-screening-system-f1ij.onrender.com/predict?resume=${resume}`
   );
 
   const data = await response.json();
