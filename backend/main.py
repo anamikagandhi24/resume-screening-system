@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import UploadFile, File
 import pdfplumber
 import pickle
@@ -8,7 +9,7 @@ import os
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["https://resume-screening-system-eosin.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
