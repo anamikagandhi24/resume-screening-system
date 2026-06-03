@@ -1,88 +1,72 @@
-# Resume Screening System
+<img width="1408" height="985" alt="WhatsApp Image 2026-06-03 at 6 39 24 PM" src="https://github.com/user-attachments/assets/1ab5ac0d-ae3f-4a36-b346-75aa1574fe4a" /># AI Resume Screening System
 
-A Machine Learning and NLP based Resume Screening System that predicts the job category of resumes using text classification techniques.
+A Machine Learning powered Resume Screening System that automatically classifies resumes into different job categories using NLP and Machine Learning techniques.
 
----
+## Live Demo
+
+Frontend: https://resume-screening-system-eosin.vercel.app
+
+Backend API: https://resume-screening-system-f1ij.onrender.com/docs
 
 ## Features
 
-- Resume text preprocessing
-- NLP cleaning pipeline
-- TF-IDF vectorization
-- Resume category prediction
-- Logistic Regression classification model
-- Custom resume prediction support
+- Upload resumes in PDF format
+- Extract text from resumes automatically
+- Predict resume category using Machine Learning
+- Real-time classification results
+- REST API built with FastAPI
+- Interactive frontend built with React
+- Fully deployed and accessible online
 
----
+## Tech Stack
 
-## Technologies Used
+### Frontend
+- React.js
+- Vite
+- CSS
 
+### Backend
+- FastAPI
 - Python
-- Pandas
+
+### Machine Learning
 - Scikit-learn
-- Jupyter Notebook
-- NLP (TF-IDF)
-- Logistic Regression
-- Git & GitHub
+- TF-IDF Vectorization
+- NLP Text Preprocessing
 
----
+### Deployment
+- Vercel (Frontend)
+- Render (Backend)
 
-## Project Workflow
+## Project Architecture
 
-1. Load resume dataset
-2. Clean and preprocess resume text
-3. Convert text into TF-IDF vectors
-4. Encode job categories
-5. Train machine learning model
-6. Evaluate model accuracy
-7. Predict category for custom resumes
+Resume PDF
+↓
+PDF Text Extraction
+↓
+Text Cleaning & Preprocessing
+↓
+TF-IDF Vectorization
+↓
+Machine Learning Model
+↓
+Category Prediction
+↓
+Frontend Display
 
----
+## Screenshots
 
-## Current Model Performance
+### Home Page
 
-- Initial Naive Bayes Accuracy: ~53%
-- Improved Logistic Regression Accuracy: ~63%
+<img width="1408" height="985" alt="WhatsApp Image 2026-06-03 at 6 39 24 PM" src="https://github.com/user-attachments/assets/198ec3a9-7639-4e9b-841f-1f728a015e7e" />
 
----
+### Prediction Result
 
-## Example Prediction
+<img width="1405" height="988" alt="WhatsApp Image 2026-06-03 at 6 42 16 PM" src="https://github.com/user-attachments/assets/bcdbe72d-9370-4996-a95b-3128ece21319" />
 
-Input Resume:
+## API Endpoints
 
-```text
-Java Spring Boot REST API MySQL AWS backend developer
-```
+### Home Endpoint
 
-## Predicted Category:
-
-Information Technology
-
-## Project Structure
-
-resume-screening-system/
-│
-├── dataset/
-├── notebook/
-├── backend/
-├── frontend/
-├── model/
-
-## Current Progress
--Environment setup completed
--Dataset preprocessing completed
--NLP pipeline implemented
--TF-IDF vectorization completed
--Logistic Regression model trained
--Custom prediction working
--GitHub repository integrated
-## Future Improvements
--Improve model accuracy
--Add Flask/FastAPI backend
--Build React frontend
--Add PDF resume upload
--Deploy project using AWS
--Add deep learning based NLP models
-
-## Author
-Anamika Gandhi
+```http
+GET /
