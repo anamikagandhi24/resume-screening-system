@@ -65,9 +65,31 @@ Frontend Display
 
 <img width="1405" height="988" alt="WhatsApp Image 2026-06-03 at 6 42 16 PM" src="https://github.com/user-attachments/assets/bcdbe72d-9370-4996-a95b-3128ece21319" />
 
-## API Endpoints
 
-### Home Endpoint
+### Installation
+Clone Repository
+git clone https://github.com/anamikagandhi24/resume-screening-system.git
+Backend Setup
+cd backend
 
-```http
-GET /
+pip install -r requirements.txt
+
+uvicorn main:app --reload
+Frontend Setup
+cd frontend
+
+npm install
+
+npm run dev
+
+## Future Improvements
+Improve model accuracy
+Add Top-3 category predictions
+Add ATS score analysis
+Add drag-and-drop upload
+Add resume improvement suggestions
+Deploy advanced transformer-based models
+
+## Author
+
+Anamika Gandhi
