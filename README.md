@@ -1,4 +1,5 @@
-<img width="1408" height="985" alt="WhatsApp Image 2026-06-03 at 6 39 24 PM" src="https://github.com/user-attachments/assets/1ab5ac0d-ae3f-4a36-b346-75aa1574fe4a" /># AI Resume Screening System
+<img width="1408" height="985" alt="WhatsApp Image 2026-06-03 at 6 39 24 PM" src="https://github.com/user-attachments/assets/1ab5ac0d-ae3f-4a36-b346-75aa1574fe4a" />
+# AI Resume Screening System
 
 A Machine Learning powered Resume Screening System that automatically classifies resumes into different job categories using NLP and Machine Learning techniques.
 
